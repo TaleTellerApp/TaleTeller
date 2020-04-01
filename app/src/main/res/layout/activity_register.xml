@@ -4,24 +4,39 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".MainActivity">
+    tools:context=".Register">
+
+    <TextView
+        android:id="@+id/textView2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="16dp"
+        android:fontFamily="casual"
+        android:text="Register Now!"
+        android:textColor="#4943FF"
+        android:textSize="30sp"
+        app:layout_constraintBottom_toTopOf="@+id/registeremail"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.498"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
 
     <EditText
-        android:id="@+id/loginemail"
+        android:id="@+id/registeremail"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:ems="10"
         android:hint="E-mail"
         android:inputType="textEmailAddress"
-        app:layout_constraintBottom_toTopOf="@+id/loginpassword"
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.494"
+        app:layout_constraintHorizontal_bias="0.51"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.687" />
+        app:layout_constraintVertical_bias="0.198" />
 
     <EditText
-        android:id="@+id/loginpassword"
+        android:id="@+id/registerpassword"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:ems="10"
@@ -35,44 +50,28 @@
         app:layout_constraintVertical_bias="0.326" />
 
     <Button
-        android:id="@+id/loginbutton"
+        android:id="@+id/backbutton"
         android:layout_width="207dp"
         android:layout_height="49dp"
+        android:layout_marginBottom="220dp"
         android:background="#5A6BFD"
-        android:text="Log in"
-        android:textColor="#070404"
-        app:layout_constraintBottom_toTopOf="@+id/gotoregisterbutton"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.495"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/loginpassword"
-        app:layout_constraintVertical_bias="0.386" />
-
-    <Button
-        android:id="@+id/gotoregisterbutton"
-        android:layout_width="207dp"
-        android:layout_height="49dp"
-        android:layout_marginBottom="228dp"
-        android:background="#5A6BFD"
-        android:text="I don't have an account"
+        android:text="Back to log in"
         android:textColor="#070404"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.48"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/loginpassword"
-        app:layout_constraintVertical_bias="0.891" />
+        app:layout_constraintHorizontal_bias="0.495"
+        app:layout_constraintStart_toStartOf="parent" />
 
-    <TextView
-        android:id="@+id/textView"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:fontFamily="casual"
-        android:text="Tale Teller"
-        android:textColor="#4943FF"
-        android:textSize="30sp"
-        app:layout_constraintBottom_toTopOf="@+id/loginemail"
+    <Button
+        android:id="@+id/registerbutton"
+        android:layout_width="207dp"
+        android:layout_height="49dp"
+        android:background="#5A6BFD"
+        android:text="Register"
+        android:textColor="#070404"
+        app:layout_constraintBottom_toTopOf="@+id/backbutton"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.495"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toBottomOf="@+id/registerpassword" />
 </androidx.constraintlayout.widget.ConstraintLayout>
