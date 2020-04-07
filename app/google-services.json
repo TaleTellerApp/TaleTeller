@@ -1,0 +1,48 @@
+{
+  "project_info": {
+    "project_number": "1003116264956",
+    "firebase_url": "https://taleteller-3cc8c.firebaseio.com",
+    "project_id": "taleteller-3cc8c",
+    "storage_bucket": "taleteller-3cc8c.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:1003116264956:android:eec5bd76e84c28dbe10679",
+        "android_client_info": {
+          "package_name": "com.example.taleteller"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "1003116264956-pg0nsfpo6b324t66r7mnlsthsc030v36.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.example.taleteller",
+            "certificate_hash": "764104c9c1ed73dafbbdc67cb93c1dec28e53cf0"
+          }
+        },
+        {
+          "client_id": "1003116264956-on7tpviv1qnr3gh8i3gkv39t1trh3k88.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDNQelaF9seUnHCksSpZ5W1d8VV5BB1EVk"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "1003116264956-on7tpviv1qnr3gh8i3gkv39t1trh3k88.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
