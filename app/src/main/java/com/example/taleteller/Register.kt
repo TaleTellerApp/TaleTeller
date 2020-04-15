@@ -7,6 +7,7 @@ import android.util.Log
 import android.util.Patterns
 import android.widget.Toast
 import com.google.firebase.auth.FirebaseAuth
+import kotlinx.android.synthetic.main.activity_main.*
 import kotlinx.android.synthetic.main.activity_register.*
 
 class Register : AppCompatActivity() {
@@ -20,6 +21,10 @@ class Register : AppCompatActivity() {
 
         registerbutton.setOnClickListener() {
             signUpUser()
+        }
+        backbutton.setOnClickListener(){
+            startActivity(Intent(this,MainActivity::class.java))
+            finish()
         }
     }
         private fun signUpUser(){

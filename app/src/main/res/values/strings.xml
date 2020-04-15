@@ -1,3 +1,4 @@
 <resources>
     <string name="app_name">TaleTeller</string>
+    <string name="content_description_end_icon" />
 </resources>

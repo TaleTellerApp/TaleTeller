@@ -51,9 +51,6 @@ class MainActivity : AppCompatActivity() {
                     val user = auth.currentUser
                     updateUI(user)
                 } else {
-                    Toast.makeText(baseContext, "Login failed.",
-                        Toast.LENGTH_SHORT).show()
-                    updateUI(null)
 
                 }
 
@@ -80,8 +77,7 @@ class MainActivity : AppCompatActivity() {
             }
         }
         else{
-            Toast.makeText(baseContext, "Login failed.",
-                Toast.LENGTH_SHORT).show()
+
         }
 
     }

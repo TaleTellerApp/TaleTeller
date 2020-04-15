@@ -8,6 +8,7 @@
 
     <EditText
         android:id="@+id/loginemail"
+        style="@android:style/Widget.Material.Light.EditText"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:ems="10"
