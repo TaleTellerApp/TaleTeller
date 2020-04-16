@@ -23,8 +23,8 @@
 
     <EditText
         android:id="@+id/registeremail"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_width="350dp"
+        android:layout_height="70dp"
         android:ems="10"
         android:hint="E-mail"
         android:inputType="textEmailAddress"
@@ -37,8 +37,8 @@
 
     <EditText
         android:id="@+id/registerpassword"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_width="350dp"
+        android:layout_height="70dp"
         android:ems="10"
         android:hint="Password"
         android:inputType="textPassword"
@@ -54,21 +54,23 @@
         android:layout_width="207dp"
         android:layout_height="49dp"
         android:layout_marginBottom="220dp"
-        android:background="#5A6BFD"
+        android:background="#6666ff"
         android:text="Back to log in"
-        android:textColor="#070404"
+        android:textColor="#ffffff"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.495"
-        app:layout_constraintStart_toStartOf="parent" />
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/registerpassword"
+        app:layout_constraintVertical_bias="0.909" />
 
     <Button
         android:id="@+id/registerbutton"
         android:layout_width="207dp"
         android:layout_height="49dp"
-        android:background="#5A6BFD"
+        android:background="#6666ff"
         android:text="Register"
-        android:textColor="#070404"
+        android:textColor="#ffffff"
         app:layout_constraintBottom_toTopOf="@+id/backbutton"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.495"

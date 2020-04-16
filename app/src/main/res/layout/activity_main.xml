@@ -9,8 +9,8 @@
     <EditText
         android:id="@+id/loginemail"
         style="@android:style/Widget.Material.Light.EditText"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_width="350dp"
+        android:layout_height="70dp"
         android:ems="10"
         android:hint="E-mail"
         android:inputType="textEmailAddress"
@@ -23,8 +23,8 @@
 
     <EditText
         android:id="@+id/loginpassword"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_width="350dp"
+        android:layout_height="70dp"
         android:ems="10"
         android:hint="Password"
         android:inputType="textPassword"
@@ -39,30 +39,28 @@
         android:id="@+id/loginbutton"
         android:layout_width="207dp"
         android:layout_height="49dp"
-        android:background="#5A6BFD"
+        android:background="#6666ff"
         android:text="Log in"
-        android:textColor="#070404"
+        android:textColor="#ffffff"
         app:layout_constraintBottom_toTopOf="@+id/gotoregisterbutton"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.500"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/loginpassword"
-        app:layout_constraintVertical_bias="0.386" />
+        app:layout_constraintVertical_bias="0.544" />
 
     <Button
         android:id="@+id/gotoregisterbutton"
         android:layout_width="207dp"
         android:layout_height="49dp"
         android:layout_marginBottom="228dp"
-        android:background="#5A6BFD"
+        android:background="#6666ff"
         android:text="I don't have an account"
-        android:textColor="#070404"
+        android:textColor="#ffffff"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.48"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/loginpassword"
-        app:layout_constraintVertical_bias="0.891" />
+        app:layout_constraintVertical_bias="0.892" />
 
     <TextView
         android:id="@+id/textView"
