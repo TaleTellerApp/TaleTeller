@@ -1,16 +1,93 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".SettingFragment">
-
-    <TextView
-        android:layout_width="match_parent"
+    tools:context=".SettingFragment"
+    android:orientation="vertical">
+    <LinearLayout
+        android:id="@+id/linearLayout2"
+        android:layout_width="fill_parent"
         android:layout_height="wrap_content"
-        android:text="Setting"
-        android:textSize="30sp"
-        android:gravity="center"
-        android:layout_centerInParent="true"
+        android:orientation="horizontal"
+        android:layout_marginTop="100dp">
+
+        <TextView
+            android:id="@+id/textView1"
+            android:layout_width="0dp"
+            android:layout_weight="1"
+            android:layout_height="wrap_content"
+            android:text="User Name"
+            android:layout_gravity="left"
+            android:textSize="25sp"
+            android:textAlignment="center"
+            android:background="#AaaaaA"/>
+
+        <TextView
+            android:id="@+id/username"
+            android:layout_width="0dp"
+            android:layout_weight="1"
+            android:layout_height="wrap_content"
+            android:text="username"
+            android:textSize="25sp"
+            android:layout_gravity="right"
+            android:textAlignment="center"
+            android:background="#CCCCCC"/>
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/linearLayout2"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:layout_marginTop="20dp">
+
+        <TextView
+            android:id="@+id/textView1"
+            android:layout_width="0dp"
+            android:layout_weight="1"
+            android:layout_height="wrap_content"
+            android:text="User E-mail"
+            android:layout_gravity="left"
+            android:textSize="25sp"
+            android:textAlignment="center"
+            android:background="#AaaaaA"/>
+
+        <TextView
+            android:id="@+id/email"
+            android:layout_width="0dp"
+            android:layout_weight="1"
+            android:layout_height="35sp"
+            android:text="username"
+            android:textSize="15sp"
+            android:layout_gravity="right"
+            android:textAlignment="center"
+            android:background="#CCCCCC"/>
+
+    </LinearLayout>
+
+    <Button
+        android:id="@+id/changeUsername"
+        android:layout_width="207dp"
+        android:layout_height="49dp"
+        android:background="#6666ff"
+        android:text="Change Username"
+        android:textColor="#ffffff"
+        android:layout_gravity="center"
+        android:layout_marginTop="100dp"
         />
-</RelativeLayout>
+
+    <Button
+        android:id="@+id/changePassword"
+        android:layout_width="207dp"
+        android:layout_height="49dp"
+        android:background="#6666ff"
+        android:text="Change Password"
+        android:textColor="#ffffff"
+        android:layout_gravity="center"
+        android:layout_marginTop="50dp"
+        />
+
+
+</LinearLayout>

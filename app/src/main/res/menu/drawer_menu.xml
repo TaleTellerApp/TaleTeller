@@ -11,33 +11,29 @@
 
             />
         <item
-            android:id="@+id/work"
-            android:title="Work"
-            android:icon="@drawable/ic_action_work"
-
-            />
-        <item
             android:id="@+id/school"
-            android:title="School"
-            android:icon="@drawable/ic_action_school"
+            android:title="My Tales"
+            android:icon="@drawable/ic_action_mytales"
 
             />
         <item
             android:id="@+id/timeline"
-            android:title="Timeline"
-            android:icon="@drawable/ic_action_timeline"
+            android:title="Add Tale"
+            android:icon="@drawable/ic_action_addtale"
 
             />
+        <item
+            android:id="@+id/setting"
+            android:title="Settings"
+            android:icon="@drawable/ic_action_setting"
+
+            />
+
     </group>
 
     <item android:title="Controls">
         <menu>
-            <item
-                android:id="@+id/setting"
-                android:title="Setting"
-                android:icon="@drawable/ic_action_setting"
 
-                />
             <item
                 android:id="@+id/logout"
                 android:title="Logout"

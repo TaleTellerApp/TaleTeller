@@ -6,10 +6,15 @@ import android.view.MenuItem
 import androidx.appcompat.app.ActionBarDrawerToggle
 import androidx.core.view.GravityCompat
 import androidx.fragment.app.FragmentTransaction
-import com.google.android.material.navigation.NavigationView
+import com.example.taleteller.fragments.ListFragment
+import com.example.taleteller.fragments.ListFragmentOwner
 import com.google.android.material.navigation.NavigationView.OnNavigationItemSelectedListener
+import com.google.firebase.auth.FirebaseAuth
+import com.google.firebase.firestore.FirebaseFirestore
 import kotlinx.android.synthetic.main.activity_main_page.*
 import kotlinx.android.synthetic.main.app_bar_main.*
+import kotlinx.android.synthetic.main.fragment_setting.*
+import kotlinx.android.synthetic.main.header.*
 
 class MainPage : AppCompatActivity() , OnNavigationItemSelectedListener{
 
@@ -27,6 +32,9 @@ class MainPage : AppCompatActivity() , OnNavigationItemSelectedListener{
         setSupportActionBar(toolbBar)
         val actionBar = supportActionBar
         actionBar?.title = "Tale Teller"
+        menuValues()
+
+
 
         val drawerToggle: ActionBarDrawerToggle = object : ActionBarDrawerToggle(
             this,
@@ -45,36 +53,30 @@ class MainPage : AppCompatActivity() , OnNavigationItemSelectedListener{
         homeFragment = HomeFragment()
         supportFragmentManager
             .beginTransaction()
-            .replace(R.id.frame_layout, homeFragment)
+            .replace(R.id.frame_layout, ListFragment.newInstance(), ListFragment.TAG)
             .setTransition(FragmentTransaction.TRANSIT_FRAGMENT_OPEN)
-            .commit()
+            .commit();
+
     }
 
     override fun onNavigationItemSelected(menuItem: MenuItem): Boolean {
         when(menuItem.itemId){
             R.id.home -> {
             homeFragment = HomeFragment()
-            supportFragmentManager
-                .beginTransaction()
-                .replace(R.id.frame_layout, homeFragment)
-                .setTransition(FragmentTransaction.TRANSIT_FRAGMENT_OPEN)
-                .commit()
-        }
-            R.id.work -> {
-                workFragment = WorkFragment()
                 supportFragmentManager
                     .beginTransaction()
-                    .replace(R.id.frame_layout, workFragment)
+                    .replace(R.id.frame_layout, ListFragment.newInstance(), ListFragment.TAG)
                     .setTransition(FragmentTransaction.TRANSIT_FRAGMENT_OPEN)
-                    .commit()
-            }
+                    .commit();
+        }
+
             R.id.school -> {
                 schoolFragment = SchoolFragment()
                 supportFragmentManager
                     .beginTransaction()
-                    .replace(R.id.frame_layout, schoolFragment)
+                    .replace(R.id.frame_layout, ListFragmentOwner.newInstance(), ListFragmentOwner.TAG)
                     .setTransition(FragmentTransaction.TRANSIT_FRAGMENT_OPEN)
-                    .commit()
+                    .commit();
             }
             R.id.timeline -> {
                 timelineFragment = TimelineFragment()
@@ -113,6 +115,26 @@ class MainPage : AppCompatActivity() , OnNavigationItemSelectedListener{
             super.onBackPressed()
         }
     }
+
+
+    fun menuValues(){
+        val db = FirebaseFirestore.getInstance()
+        val u = FirebaseAuth.getInstance().currentUser
+        val docRef = db.collection("Users").document(u!!.uid)
+        docRef.get()
+            .addOnSuccessListener { document ->
+                if (document != null) {
+                    menuUserName.text = document.getString("userName")
+                    menuUserEmail.text = document.getString("email")
+                } else {
+
+                }
+            }
+            .addOnFailureListener { exception ->
+
+            }
+    }
+
 
 
 

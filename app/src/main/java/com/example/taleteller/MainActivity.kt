@@ -3,10 +3,12 @@ package com.example.taleteller
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.util.Log
 import android.util.Patterns
 import android.widget.Toast
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.auth.FirebaseUser
+import com.google.firebase.firestore.FirebaseFirestore
 import kotlinx.android.synthetic.main.activity_main.*
 import kotlinx.android.synthetic.main.activity_register.*
 
@@ -67,8 +69,7 @@ class MainActivity : AppCompatActivity() {
     private fun updateUI(currentUser : FirebaseUser?){
         if(currentUser != null){
             if(currentUser.isEmailVerified) {
-                startActivity(Intent(this, MainPage::class.java))
-                finish()
+                firstLog()
             }
             else{
                 Toast.makeText(baseContext, "Please verify your email address",
@@ -79,6 +80,35 @@ class MainActivity : AppCompatActivity() {
         else{
 
         }
+
+    }
+
+    fun firstLog(){
+        val u = FirebaseAuth.getInstance().currentUser
+        val db = FirebaseFirestore.getInstance()
+        if (u != null) {
+            val docRef = db.collection("Users").document(u.uid)
+            docRef.get()
+                .addOnSuccessListener { document ->
+                    if (document.data != null) {
+                        Log.d("loged", "DocumentSnapshot data: ${document.data}")
+                        startActivity(Intent(this,MainPage::class.java))
+                        finish()
+                    }
+                    else{
+                        Log.d("nologed", u.uid)
+                        startActivity(Intent(this,FirstLogin::class.java))
+                        finish()
+                    }
+                }
+                .addOnFailureListener { exception ->
+
+                }
+
+        } else {
+            // No user is signed in
+        }
+
 
     }
 }
