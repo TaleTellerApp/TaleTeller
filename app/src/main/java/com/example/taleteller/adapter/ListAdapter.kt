@@ -29,6 +29,8 @@ class ListAdapter: BaseRecyclerViewAdapter<User>() {
         private val imageView: ImageView = view.image_view
         private val titleView: TextView = view.title
         private val shortcutView: TextView = view.shortcut
+        private val likesView: TextView = view.likes
+
 
         init {
             view.setOnClickListener(this)
@@ -38,6 +40,8 @@ class ListAdapter: BaseRecyclerViewAdapter<User>() {
             user?.resId?.let { imageView.setImageResource(it) }
             titleView.text = user?.title
             shortcutView.text = user?.shortcut
+            likesView.text = user?.likes
+
         }
 
         override fun onClick(v: View?) {

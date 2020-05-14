@@ -11,9 +11,7 @@ import android.widget.Toast
 import androidx.fragment.app.Fragment
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
-import com.example.taleteller.DetailsActivity
-import com.example.taleteller.HomeFragment
-import com.example.taleteller.R
+import com.example.taleteller.*
 import com.example.taleteller.adapter.ListAdapter
 import com.example.taleteller.callback.OnItemClickListener
 import com.example.taleteller.model.User
@@ -48,6 +46,7 @@ class ListFragment: Fragment() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         onCreateComponent()
+
     }
 
     private fun onCreateComponent() {
@@ -56,11 +55,12 @@ class ListFragment: Fragment() {
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
         rootView = inflater.inflate(R.layout.fragment_list, container, false);
+
         initView()
         return rootView
     }
 
-    private fun initView(){
+    fun initView(){
         setUpAdapter()
         initializeRecyclerView()
         getData()
@@ -85,33 +85,25 @@ class ListFragment: Fragment() {
         recyclerView.adapter = adapter
     }
 
-//   private fun setUpDummyData(){
-//        var list: ArrayList<User> = ArrayList<User>()
-//        list.add(User("Title1", "Shortcut1",R.drawable.user))
-
-
-//        adapter.addItems(list)
- //   }
     fun getData(){
+
         val db = FirebaseFirestore.getInstance()
         val u = FirebaseAuth.getInstance().currentUser
         db.collection("Tales").orderBy("Likes",Query.Direction.DESCENDING).addSnapshotListener{snap , e ->
             if(e != null){
-
-                Log.d("exist", "Current data: ")
                 return@addSnapshotListener
                 }
             snap!!.documentChanges.iterator().forEach {doc ->
                 if(doc.type == DocumentChange.Type.ADDED){
                     val id = doc.document.id
-                    Log.d("Current",id )
                     val tit = doc.document.get("Title") as? String
                     val sho = doc.document.get("Shortcut") as? String
                     val con = doc.document.get("Content") as? String
                     val own = doc.document.get("UserID") as? String
-                    list.add(User(tit!!,sho!!,con!!,own!!,R.drawable.okladka))
+                    val likes = doc.document.get("Likes").toString() as? String
+                    list.add(User(id!!,tit!!,sho!!,con!!,own!!,likes!!,R.drawable.okladka))
 
-
+                    adapter.notifyDataSetChanged()
                 }
 
             }
@@ -119,35 +111,4 @@ class ListFragment: Fragment() {
 
         }
     }
-    fun getMyData(){
-        val db = FirebaseFirestore.getInstance()
-        val u = FirebaseAuth.getInstance().currentUser
-        db.collection("Tales").orderBy("Likes",Query.Direction.DESCENDING).whereEqualTo("UserID",u!!.uid).addSnapshotListener{snap , e ->
-            if(e != null){
-
-                Log.d("exist", "Current data: ")
-                return@addSnapshotListener
-            }
-            snap!!.documentChanges.iterator().forEach {doc ->
-                if(doc.type == DocumentChange.Type.ADDED){
-                    val id = doc.document.id
-                    Log.d("Current",id )
-                    val tit = doc.document.get("Title") as? String
-                    val sho = doc.document.get("Shortcut") as? String
-                    val con = doc.document.get("Content") as? String
-                    val own = doc.document.get("UserID") as? String
-                    list.add(User(tit!!,sho!!,con!!,own!!,R.drawable.okladka))
-
-
-                }
-
-            }
-            adapter.addItems(list)
-
-        }
-
-
-    }
-
-
 }

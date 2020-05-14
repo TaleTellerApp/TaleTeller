@@ -11,9 +11,7 @@ import android.widget.Toast
 import androidx.fragment.app.Fragment
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
-import com.example.taleteller.DetailsActivity
-import com.example.taleteller.HomeFragment
-import com.example.taleteller.R
+import com.example.taleteller.*
 import com.example.taleteller.adapter.ListAdapter
 import com.example.taleteller.callback.OnItemClickListener
 import com.example.taleteller.model.User
@@ -25,7 +23,7 @@ import com.google.firebase.firestore.Query
 import kotlinx.android.synthetic.main.fragment_home.*
 
 
-class ListFragmentOwner: Fragment() {
+class ListFragmentDate: Fragment() {
     var list: ArrayList<User> = ArrayList<User>()
     protected lateinit var rootView: View
     lateinit var recyclerView: RecyclerView
@@ -33,11 +31,11 @@ class ListFragmentOwner: Fragment() {
 
 
     companion object {
-        var TAG = ListFragmentOwner::class.java.simpleName
+        var TAG = ListFragmentDate::class.java.simpleName
         const val ARG_POSITION: String = "positioin"
 
-        fun newInstance(): ListFragmentOwner {
-            var fragment = ListFragmentOwner();
+        fun newInstance(): ListFragmentDate {
+            var fragment = ListFragmentDate();
             val args = Bundle()
             args.putInt(ARG_POSITION, 1)
             fragment.arguments = args
@@ -57,16 +55,15 @@ class ListFragmentOwner: Fragment() {
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
         rootView = inflater.inflate(R.layout.fragment_list, container, false);
+
         initView()
         return rootView
     }
 
-    private fun initView(){
+    fun initView(){
         setUpAdapter()
         initializeRecyclerView()
-        getMyData()
-
-
+        getData()
     }
 
     private fun setUpAdapter() {
@@ -88,23 +85,14 @@ class ListFragmentOwner: Fragment() {
         recyclerView.adapter = adapter
     }
 
-//   private fun setUpDummyData(){
-//        var list: ArrayList<User> = ArrayList<User>()
-//        list.add(User("Title1", "Shortcut1",R.drawable.user))
+    fun getData(){
 
-
-    //        adapter.addItems(list)
-    //   }
-
-    fun getMyData(){
         val db = FirebaseFirestore.getInstance()
         val u = FirebaseAuth.getInstance().currentUser
-        db.collection("Tales").orderBy("Likes",Query.Direction.DESCENDING).whereEqualTo("UserID",u!!.uid).addSnapshotListener{snap , e ->
+        db.collection("Tales").orderBy("EditDate",Query.Direction.DESCENDING).addSnapshotListener{snap , e ->
             if(e != null){
-
-                Log.d("exist", "Current data: ")
                 return@addSnapshotListener
-            }
+                }
             snap!!.documentChanges.iterator().forEach {doc ->
                 if(doc.type == DocumentChange.Type.ADDED){
                     val id = doc.document.id
@@ -122,9 +110,5 @@ class ListFragmentOwner: Fragment() {
             adapter.addItems(list)
 
         }
-
-
     }
-
-
 }

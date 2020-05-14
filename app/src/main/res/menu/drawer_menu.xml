@@ -4,12 +4,23 @@
     tools:showIn="navigation_view">
 
     <group android:checkableBehavior="single">
-        <item
-            android:id="@+id/home"
-            android:title="Home"
-            android:icon="@drawable/ic_action_home"
 
-            />
+        <item
+            android:id="@+id/submenu"
+            android:title="Tales ordered by"
+            android:icon="@drawable/ic_action_home"
+            >
+            <menu>
+                <item
+                    android:id="@+id/home"
+                    android:title="Popularity"
+                    android:icon="@drawable/ic_action_home"/>
+                <item
+                    android:id="@+id/home2"
+                    android:title="Date"
+                    android:icon="@drawable/ic_action_home"/>
+            </menu>
+        </item>
         <item
             android:id="@+id/school"
             android:title="My Tales"

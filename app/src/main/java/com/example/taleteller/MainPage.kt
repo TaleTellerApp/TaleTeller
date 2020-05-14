@@ -1,12 +1,19 @@
 package com.example.taleteller
 
+import android.content.Context
+import android.content.SharedPreferences
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.util.Log
 import android.view.MenuItem
+import android.view.View
+import android.widget.*
 import androidx.appcompat.app.ActionBarDrawerToggle
 import androidx.core.view.GravityCompat
 import androidx.fragment.app.FragmentTransaction
+
 import com.example.taleteller.fragments.ListFragment
+import com.example.taleteller.fragments.ListFragmentDate
 import com.example.taleteller.fragments.ListFragmentOwner
 import com.google.android.material.navigation.NavigationView.OnNavigationItemSelectedListener
 import com.google.firebase.auth.FirebaseAuth
@@ -16,7 +23,12 @@ import kotlinx.android.synthetic.main.app_bar_main.*
 import kotlinx.android.synthetic.main.fragment_setting.*
 import kotlinx.android.synthetic.main.header.*
 
+
+
+
 class MainPage : AppCompatActivity() , OnNavigationItemSelectedListener{
+
+
 
     lateinit var homeFragment: HomeFragment
     lateinit var workFragment: WorkFragment
@@ -33,6 +45,7 @@ class MainPage : AppCompatActivity() , OnNavigationItemSelectedListener{
         val actionBar = supportActionBar
         actionBar?.title = "Tale Teller"
         menuValues()
+
 
 
 
@@ -57,7 +70,11 @@ class MainPage : AppCompatActivity() , OnNavigationItemSelectedListener{
             .setTransition(FragmentTransaction.TRANSIT_FRAGMENT_OPEN)
             .commit();
 
+
     }
+
+
+
 
     override fun onNavigationItemSelected(menuItem: MenuItem): Boolean {
         when(menuItem.itemId){
@@ -66,6 +83,14 @@ class MainPage : AppCompatActivity() , OnNavigationItemSelectedListener{
                 supportFragmentManager
                     .beginTransaction()
                     .replace(R.id.frame_layout, ListFragment.newInstance(), ListFragment.TAG)
+                    .setTransition(FragmentTransaction.TRANSIT_FRAGMENT_OPEN)
+                    .commit();
+        }
+            R.id.home2 -> {
+            homeFragment = HomeFragment()
+                supportFragmentManager
+                    .beginTransaction()
+                    .replace(R.id.frame_layout, ListFragmentDate.newInstance(), ListFragmentDate.TAG)
                     .setTransition(FragmentTransaction.TRANSIT_FRAGMENT_OPEN)
                     .commit();
         }

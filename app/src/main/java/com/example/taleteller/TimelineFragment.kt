@@ -58,7 +58,6 @@ class TimelineFragment : Fragment() {
 
         db.collection("Tales").document().set(map).addOnCompleteListener(){
             if(it.exception != null) {
-                Log.d("Duzy", "Problem")
                 return@addOnCompleteListener
             }
         }

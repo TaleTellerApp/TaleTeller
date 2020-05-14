@@ -24,5 +24,48 @@
             android:layout_marginRight="10dp"
             android:layout_centerHorizontal="true"
             android:layout_below="@id/image_view"/>
+
+
+    <ImageView
+        android:id="@+id/detailsUserAvatar"
+        android:layout_marginLeft="20dp"
+        android:layout_width="75dp"
+        android:layout_height="75dp"
+        android:layout_below="@+id/text_view"
+        android:layout_marginTop="20dp"
+        android:src="@mipmap/ic_launcher_round" />
+
+    <TextView
+        android:id="@+id/detailsUserName"
+        android:layout_marginLeft="28dp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/detailsUserAvatar"
+        android:text="User Name"
+        android:textSize="20sp"
+        android:textStyle="bold"
+        />
+
+    <ImageView
+        android:id="@+id/likeImg"
+        android:layout_width="75dp"
+        android:layout_height="75dp"
+        android:layout_below="@+id/text_view"
+        android:layout_marginLeft="200dp"
+        android:layout_marginTop="20dp"
+        android:layout_toRightOf="@+id/detailsUserAvatar"
+        android:src="@drawable/ic_action_like" />
+
+    <TextView
+        android:id="@+id/likeNumber"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/likeImg"
+        android:layout_toRightOf="@+id/detailsUserAvatar"
+        android:layout_marginLeft="228dp"
+        android:text="text"
+        android:textSize="20sp"
+        android:textStyle="bold"/>
+
 </RelativeLayout>
 </ScrollView>

@@ -29,18 +29,21 @@ class FirstLogin : AppCompatActivity() {
     fun saveUsername(){
         val db = FirebaseFirestore.getInstance()
         val u = FirebaseAuth.getInstance().currentUser
-        val map = HashMap<String,Any>()
-        Log.d( "Problem2","Problem2")
+        val map = hashMapOf(
+            "userName" to inputUsername!!.text.toString(),
+            "email" to u!!.email.toString(),
+            "firstLogin" to Date()
+        )
+        val map2 = hashMapOf("exist" to true)
 
-        map.set("userName",inputUsername!!.text.toString())
-        map.set("email",u!!.email.toString())
-        map.set("firstLogin", Date())
-        Log.d( "Problem3","Problem3")
+
 
         db.collection("Users").document(u!!.uid).set(map).addOnCompleteListener(){
             if(it.exception != null) {
                 return@addOnCompleteListener
             }
+        }
+        db.collection("Users").document(u!!.uid).collection("Liked").document("test").set(map2).addOnCompleteListener(){
         }
 
 
