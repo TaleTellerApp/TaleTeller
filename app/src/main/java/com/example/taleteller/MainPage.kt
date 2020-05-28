@@ -1,6 +1,7 @@
 package com.example.taleteller
 
 import android.content.Context
+import android.content.Intent
 import android.content.SharedPreferences
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
@@ -86,13 +87,11 @@ class MainPage : AppCompatActivity() , OnNavigationItemSelectedListener{
                     .setTransition(FragmentTransaction.TRANSIT_FRAGMENT_OPEN)
                     .commit();
         }
-            R.id.home2 -> {
-            homeFragment = HomeFragment()
+            R.id.search -> {
+            workFragment = WorkFragment()
                 supportFragmentManager
-                    .beginTransaction()
-                    .replace(R.id.frame_layout, ListFragmentDate.newInstance(), ListFragmentDate.TAG)
-                    .setTransition(FragmentTransaction.TRANSIT_FRAGMENT_OPEN)
-                    .commit();
+                startActivity(Intent(this,searchActivity::class.java))
+                finish()
         }
 
             R.id.school -> {

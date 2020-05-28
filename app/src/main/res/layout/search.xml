@@ -3,7 +3,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".WorkFragment"
+    tools:context=".searchActivity"
     android:orientation="vertical">
 
     <EditText
@@ -14,21 +14,34 @@
         android:ems="10"
         android:hint="Title"
         android:layout_gravity="center"
-        android:inputType="textEmailAddress" 
+        android:inputType="textEmailAddress"
         android:layout_marginTop="100dp"
         />
+    <TextView
+        android:layout_marginTop="20dp"
+        android:layout_gravity="center"
+        android:layout_width="200dp"
+        android:layout_height="20dp"
+        android:text="Category"/>
     <Spinner
         android:layout_gravity="center"
         android:id="@+id/categorySpinner"
-        android:layout_width="200dp"
+        android:layout_width="300dp"
         android:layout_height="50dp"
-        android:layout_marginTop="20dp"/>
+        />
+
+    <TextView
+        android:layout_marginTop="20dp"
+        android:layout_gravity="center"
+        android:layout_width="200dp"
+        android:layout_height="20dp"
+        android:text="Ordered by"/>
     <Spinner
         android:layout_gravity="center"
         android:id="@+id/sortSpinner"
-        android:layout_width="200dp"
+        android:layout_width="300dp"
         android:layout_height="50dp"
-        android:layout_marginTop="20dp"/>
+        />
 
     <Button
         android:id="@+id/applyFilter"
@@ -39,6 +52,16 @@
         android:textColor="#ffffff"
         android:layout_gravity="center"
         android:layout_marginTop="100dp"
+        />
+    <Button
+        android:id="@+id/cancelFilter"
+        android:layout_width="100dp"
+        android:layout_height="30dp"
+        android:background="#6666ff"
+        android:text="Cancel"
+        android:textColor="#ffffff"
+        android:layout_gravity="center"
+        android:layout_marginTop="20dp"
         />
 
 </LinearLayout>

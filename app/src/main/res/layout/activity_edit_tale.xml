@@ -1,0 +1,86 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".EditTale">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_marginLeft="20dp"
+        android:layout_marginRight="20dp">
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical">
+            <com.google.android.material.textfield.TextInputLayout
+                android:id="@+id/textInputLayout2"
+                android:layout_width="409dp"
+                android:layout_height="wrap_content"
+                tools:layout_editor_absoluteX="1dp"
+                tools:layout_editor_absoluteY="65dp"
+                >
+
+                <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/changeTitle"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:hint="Title"
+                    android:inputType="textMultiLine"
+                    android:maxLength="50"/>
+            </com.google.android.material.textfield.TextInputLayout>
+            <Spinner
+                android:layout_gravity="center"
+                android:id="@+id/categorySpinner"
+                android:layout_width="200dp"
+                android:layout_height="50dp"
+                android:layout_marginTop="20dp"
+                />
+
+            <com.google.android.material.textfield.TextInputLayout
+
+                android:id="@+id/textInputLayout"
+                android:layout_width="409dp"
+                android:layout_height="wrap_content"
+                app:layout_constraintTop_toBottomOf="@+id/textInputLayout2"
+                tools:layout_editor_absoluteX="1dp"
+                >
+
+                <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/changeShortcut"
+                    android:layout_width="match_parent"
+                    android:layout_height="100sp"
+                    android:hint="Shortcut of your tale"
+                    android:inputType="textMultiLine"
+                    android:maxLength="200"/>
+            </com.google.android.material.textfield.TextInputLayout>
+
+            <com.google.android.material.textfield.TextInputLayout
+                android:layout_width="409dp"
+                android:layout_height="wrap_content"
+                app:layout_constraintTop_toBottomOf="@+id/textInputLayout"
+                tools:layout_editor_absoluteX="1dp">
+
+                <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/changeContent"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:minHeight="200sp"
+                    android:hint="Tale"
+                    android:inputType="textMultiLine"/>
+            </com.google.android.material.textfield.TextInputLayout>
+            <Button
+                android:id="@+id/changeTale"
+                android:layout_width="207dp"
+                android:layout_height="49dp"
+                android:background="#6666ff"
+                android:text="Change"
+                android:textColor="#ffffff"
+                android:layout_gravity="center"
+                />
+        </LinearLayout>
+    </RelativeLayout>
+
+</ScrollView>

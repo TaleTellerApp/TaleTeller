@@ -35,6 +35,14 @@ class DetailsActivity : AppCompatActivity() {
 
         getData()
         owner()
+        editButton.setOnClickListener(){
+            Search.Companion.titleVar = user.title.toString()
+            Search.Companion.shortcutVar = user.shortcut.toString()
+            Search.Companion.contentVar = user.content.toString()
+            Search.Companion.idVar = user.id.toString()
+            startActivity(Intent(this,EditTale::class.java))
+            finish()
+        }
         likeImg.setOnClickListener(){
             val user: User = intent.getParcelableExtra(EXTRA_USER_MODEL)
             val u = FirebaseAuth.getInstance().currentUser
@@ -85,6 +93,7 @@ class DetailsActivity : AppCompatActivity() {
             }
         if(user?.owner.toString() == u!!.uid){
             likeImg.setImageResource(R.drawable.ic_action_like1)
+            editButton.visibility = 1
         }
 
     }

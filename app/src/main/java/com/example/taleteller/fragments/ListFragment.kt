@@ -86,10 +86,15 @@ class ListFragment: Fragment() {
     }
 
     fun getData(){
+        val title =Search.Companion.titleVar
+        val category = Search.Companion.categoryVar
+        val order = Search.Companion.orderVar
+        println(order)
 
         val db = FirebaseFirestore.getInstance()
         val u = FirebaseAuth.getInstance().currentUser
-        db.collection("Tales").orderBy("Likes",Query.Direction.DESCENDING).addSnapshotListener{snap , e ->
+        if(title == "" && category == "default"){
+        db.collection("Tales").orderBy(order, Query.Direction.DESCENDING).addSnapshotListener{snap , e ->
             if(e != null){
                 return@addSnapshotListener
                 }
@@ -110,5 +115,78 @@ class ListFragment: Fragment() {
             adapter.addItems(list)
 
         }
+        }
+        else if(title == "" && category != "default"){
+            db.collection("Tales").orderBy(order,Query.Direction.DESCENDING).whereEqualTo("Category",category).addSnapshotListener{snap , e ->
+                if(e != null){
+                    return@addSnapshotListener
+                }
+                snap!!.documentChanges.iterator().forEach {doc ->
+                    if(doc.type == DocumentChange.Type.ADDED){
+                        val id = doc.document.id
+                        val tit = doc.document.get("Title") as? String
+                        val sho = doc.document.get("Shortcut") as? String
+                        val con = doc.document.get("Content") as? String
+                        val own = doc.document.get("UserID") as? String
+                        val likes = doc.document.get("Likes").toString() as? String
+                        list.add(User(id!!,tit!!,sho!!,con!!,own!!,likes!!,R.drawable.okladka))
+
+                        adapter.notifyDataSetChanged()
+                    }
+
+                }
+                adapter.addItems(list)
+
+            }
+        }
+        else if(title != "" && category == "default"){
+            db.collection("Tales").orderBy(order,Query.Direction.DESCENDING).whereEqualTo("Title",title).addSnapshotListener{snap , e ->
+                if(e != null){
+                    return@addSnapshotListener
+                }
+                snap!!.documentChanges.iterator().forEach {doc ->
+                    if(doc.type == DocumentChange.Type.ADDED){
+                        val id = doc.document.id
+                        val tit = doc.document.get("Title") as? String
+                        val sho = doc.document.get("Shortcut") as? String
+                        val con = doc.document.get("Content") as? String
+                        val own = doc.document.get("UserID") as? String
+                        val likes = doc.document.get("Likes").toString() as? String
+                        list.add(User(id!!,tit!!,sho!!,con!!,own!!,likes!!,R.drawable.okladka))
+
+                        adapter.notifyDataSetChanged()
+                    }
+
+                }
+                adapter.addItems(list)
+
+            }
+        }
+        else{
+            db.collection("Tales").orderBy(order,Query.Direction.DESCENDING).whereEqualTo("Category",category).whereEqualTo("Title",title).addSnapshotListener{snap , e ->
+                if(e != null){
+                    return@addSnapshotListener
+                }
+                snap!!.documentChanges.iterator().forEach {doc ->
+                    if(doc.type == DocumentChange.Type.ADDED){
+                        val id = doc.document.id
+                        val tit = doc.document.get("Title") as? String
+                        val sho = doc.document.get("Shortcut") as? String
+                        val con = doc.document.get("Content") as? String
+                        val own = doc.document.get("UserID") as? String
+                        val likes = doc.document.get("Likes").toString() as? String
+                        list.add(User(id!!,tit!!,sho!!,con!!,own!!,likes!!,R.drawable.okladka))
+
+                        adapter.notifyDataSetChanged()
+                    }
+
+                }
+                adapter.addItems(list)
+
+            }
+        }
+        Search.Companion.titleVar = ""
+        Search.Companion.categoryVar = "default"
+        Search.Companion.orderVar = "Likes"
     }
 }
