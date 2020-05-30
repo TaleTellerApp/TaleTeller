@@ -20,18 +20,34 @@
             android:hint="Enter your Nickname"
             android:id="@+id/inputUsername"/>
     </com.google.android.material.textfield.TextInputLayout>
+
     <Button
-        android:id="@+id/saveUsername"
-        android:layout_width="207dp"
-        android:layout_height="49dp"
-        android:background="#6666ff"
-        android:text="save"
-        android:textColor="#ffffff"
+        android:id="@+id/saveUsername2"
+        android:layout_width="202dp"
+        android:layout_height="wrap_content"
         android:layout_gravity="center"
         android:layout_marginTop="100dp"
-        />
+        android:background="#6666ff"
+        android:text="save"
+        android:textColor="#ffffff" />
 
+    <Button
+        android:id="@+id/button2"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Choose" />
 
+    <Button
+        android:id="@+id/button3"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Upload" />
+
+    <ImageView
+        android:id="@+id/imageView2"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:srcCompat="@drawable/ic_launcher_background" />
 
 
 </LinearLayout>
