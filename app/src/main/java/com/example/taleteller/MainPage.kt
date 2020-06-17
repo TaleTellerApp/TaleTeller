@@ -3,6 +3,8 @@ package com.example.taleteller
 import android.content.Context
 import android.content.Intent
 import android.content.SharedPreferences
+import android.graphics.Bitmap
+import android.graphics.BitmapFactory
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
@@ -16,15 +18,18 @@ import androidx.fragment.app.FragmentTransaction
 import com.example.taleteller.fragments.ListFragment
 import com.example.taleteller.fragments.ListFragmentDate
 import com.example.taleteller.fragments.ListFragmentOwner
+import com.google.android.gms.tasks.OnSuccessListener
 import com.google.android.material.navigation.NavigationView.OnNavigationItemSelectedListener
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.firestore.FirebaseFirestore
+import com.google.firebase.storage.FileDownloadTask
+import com.google.firebase.storage.FirebaseStorage
 import kotlinx.android.synthetic.main.activity_main_page.*
 import kotlinx.android.synthetic.main.app_bar_main.*
 import kotlinx.android.synthetic.main.fragment_setting.*
 import kotlinx.android.synthetic.main.header.*
-
-
+import java.io.File
+import java.io.IOException
 
 
 class MainPage : AppCompatActivity() , OnNavigationItemSelectedListener{
@@ -39,6 +44,8 @@ class MainPage : AppCompatActivity() , OnNavigationItemSelectedListener{
     lateinit var logoutFragment: LogoutFragment
 
 
+
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main_page)
@@ -46,6 +53,7 @@ class MainPage : AppCompatActivity() , OnNavigationItemSelectedListener{
         val actionBar = supportActionBar
         actionBar?.title = "Tale Teller"
         menuValues()
+
 
 
 
@@ -144,6 +152,10 @@ class MainPage : AppCompatActivity() , OnNavigationItemSelectedListener{
     fun menuValues(){
         val db = FirebaseFirestore.getInstance()
         val u = FirebaseAuth.getInstance().currentUser
+        val storage = FirebaseStorage.getInstance()
+        val storageReference = storage.getReferenceFromUrl("gs://taleteller-3cc8c.appspot.com/avatar").child(u!!.uid+".jpg")
+
+
         val docRef = db.collection("Users").document(u!!.uid)
         docRef.get()
             .addOnSuccessListener { document ->
@@ -157,6 +169,17 @@ class MainPage : AppCompatActivity() , OnNavigationItemSelectedListener{
             .addOnFailureListener { exception ->
 
             }
+        try{
+            val file = File.createTempFile("image","jpg")
+            storageReference.getFile(file).addOnSuccessListener {
+
+                    val bitmap = BitmapFactory.decodeFile(file.absolutePath)
+                    avatarMenu.setImageBitmap(bitmap)
+
+            }
+        }catch(e : IOException) {
+        }
+
     }
 
 

@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
@@ -7,12 +7,25 @@
     tools:context=".FirstLogin"
     android:orientation="vertical">
 
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical">
+
+    <ImageView
+        android:id="@+id/imageView2"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:src="@mipmap/ic_launcher_round"
+        android:layout_marginTop="100dp"
+        />
+
 
     <com.google.android.material.textfield.TextInputLayout
         android:layout_width="350dp"
         android:layout_height="70dp"
         android:layout_gravity="center"
-        android:layout_marginTop="200dp">
+        android:layout_marginTop="50dp">
 
         <com.google.android.material.textfield.TextInputEditText
             android:layout_width="match_parent"
@@ -21,33 +34,32 @@
             android:id="@+id/inputUsername"/>
     </com.google.android.material.textfield.TextInputLayout>
 
+
+
+    <Button
+        android:id="@+id/button2"
+        android:layout_width="202dp"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:background="#6666ff"
+        android:textColor="#ffffff"
+        android:text="Choose Avatar"
+        android:layout_marginTop="100dp"/>
+
     <Button
         android:id="@+id/saveUsername2"
         android:layout_width="202dp"
         android:layout_height="wrap_content"
         android:layout_gravity="center"
-        android:layout_marginTop="100dp"
+        android:layout_marginTop="10dp"
         android:background="#6666ff"
         android:text="save"
-        android:textColor="#ffffff" />
-
-    <Button
-        android:id="@+id/button2"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="Choose" />
-
-    <Button
-        android:id="@+id/button3"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="Upload" />
-
-    <ImageView
-        android:id="@+id/imageView2"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        app:srcCompat="@drawable/ic_launcher_background" />
+        android:textColor="#ffffff"
+        android:layout_marginBottom="10dp"/>
 
 
-</LinearLayout>
+
+
+    </LinearLayout>
+
+</ScrollView>

@@ -30,7 +30,35 @@
                     android:hint="Title"
                     android:inputType="textMultiLine"
                     android:maxLength="50"/>
+
             </com.google.android.material.textfield.TextInputLayout>
+            <ImageView
+                android:id="@+id/imageView"
+                android:layout_width="200dp"
+                android:layout_height="200dp"
+                android:src="@drawable/okladka"
+                android:layout_gravity="center"
+
+                />
+
+            <Button
+                android:id="@+id/button2"
+                android:layout_width="202dp"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:background="#6666ff"
+                android:textColor="#ffffff"
+                android:text="Choose Cover"
+                android:layout_marginTop="10dp"/>
+            <Button
+                android:id="@+id/chooseRec"
+                android:layout_width="202dp"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:background="#6666ff"
+                android:textColor="#ffffff"
+                android:text="Choose Recoding"
+                android:layout_marginTop="10dp"/>
             <Spinner
                 android:layout_gravity="center"
                 android:id="@+id/categorySpinner"

@@ -30,43 +30,50 @@ class FirstLogin : AppCompatActivity() {
 
         saveUsername2.setOnClickListener{
             saveUsername()
-            button2.setOnClickListener{
-                startFileChooser()
-            }
-            button3.setOnClickListener(){
-                uploadFile()
-            }
+            uploadFile()
 
-            startActivity(Intent(this,MainPage::class.java))
+        }
+        button2.setOnClickListener{
+            startFileChooser()
         }
     }
     fun startFileChooser() {
         var i = Intent()
-        i.setType("img/*")
+        i.setType("image/*")
         i.setAction(Intent.ACTION_GET_CONTENT)
         startActivityForResult(Intent.createChooser(i,"Choose Picture"),111)
     }
     fun uploadFile(){
+        val u = FirebaseAuth.getInstance().currentUser
+        val fileSource = "avatar/" + u!!.uid + ".jpg"
         if(filepath!=null){
             var pd = ProgressDialog(this)
             pd.setTitle("Uploading")
             pd.show()
 
-            var imageRef = FirebaseStorage.getInstance().reference.child("img/pic.jpg")
+            var imageRef = FirebaseStorage.getInstance().reference.child(fileSource)
             imageRef.putFile(filepath)
                 .addOnSuccessListener {p0 ->
                     pd.dismiss()
-                    Toast.makeText(applicationContext,"File Uploaded",Toast.LENGTH_LONG).show()
+                    //Toast.makeText(applicationContext,"File Uploaded",Toast.LENGTH_LONG).show()
+                    startActivity(Intent(this,MainPage::class.java))
+                    finish()
                 }
                 .addOnFailureListener{p0 ->
                     pd.dismiss()
-                    Toast.makeText(applicationContext,p0.message,Toast.LENGTH_LONG).show()
+                    startActivity(Intent(this,MainPage::class.java))
+                    finish()
+                    //Toast.makeText(applicationContext,p0.message,Toast.LENGTH_LONG).show()
                 }
                 .addOnProgressListener {p0 ->
                     var progress = (100.0 * p0.bytesTransferred) / p0.totalByteCount
                     pd.setMessage("Uploaded ${progress.toInt()}%")
 
                 }
+        }
+        else{
+            startActivity(Intent(this,MainPage::class.java))
+            finish()
         }
     }
     override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {

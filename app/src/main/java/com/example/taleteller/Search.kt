@@ -10,6 +10,7 @@ class Search: Application() {
         var contentVar = ""
         var shortcutVar = ""
         var idVar = ""
+        var sentenceCounter = 1
     }
 
     override fun onCreate() {
